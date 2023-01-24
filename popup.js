@@ -19,3 +19,10 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
 	document.body.style.backgroundColor = newValue;
   }
 });
+
+window.addEventListener("load", () => {
+	console.log("i am loading");
+	chrome.storage.sync.get(["selectedColor"], (res) => {
+		document.body.style.backgroundColor = res.selectedColor;
+	});
+});
